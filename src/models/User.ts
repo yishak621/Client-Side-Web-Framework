@@ -17,9 +17,10 @@ export class User {
     Object.assign(this.data, update); //the first argument is the object to be replaced
   }
 
-  on(eventName: string, callback: Callback) {
+  on(eventName: string, callback: Callback): void {
     const handlers = this.events[eventName] || [];
-    handlers.push(callback);
+    handlers.push(callback); //pushing to the handlers array
+    this.events[eventName] = handlers;
   }
 }
 
